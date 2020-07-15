@@ -2,6 +2,7 @@ import sys
 import pygame 
 from settings import Settings
 from star import Star
+from random import randint
 
 class StarrySky: 
 	def __init__(self): 
@@ -29,6 +30,8 @@ class StarrySky:
 		pygame.display.flip()
 
 	def _create_stars(self): 
+
+
 		star = Star(self)
 		star_width, star_height = star.rect.size
 
@@ -42,11 +45,13 @@ class StarrySky:
 				self._create_star(star_number, row_number)
 
 	def _create_star(self, star_number, row_number): 
+		random_number_1 = randint(-10, 10)
+		random_number_2 = randint(-10, 10)
 		new_star = Star(self)
 		star_width, star_height = new_star.rect.size
 		new_star.x = star_width + (2 * star_width * star_number)
-		new_star.rect.x = int(new_star.x)
-		new_star.rect.y = star_height + (2 * star_height * row_number)
+		new_star.rect.x = int(new_star.x + random_number_1)
+		new_star.rect.y = star_height + (2 * star_height * row_number) + random_number_2
 		self.stars.add(new_star)
 
 if __name__ == '__main__': 
