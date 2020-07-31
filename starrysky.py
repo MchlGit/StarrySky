@@ -16,12 +16,19 @@ class StarrySky:
 	def run_game(self): 
 		while True: 
 			self._check_events()
+			self._update_stars()
 			self._update_screen()
 
 	def _check_events(self): 
 		for event in pygame.event.get(): 
 			if event.type == pygame.QUIT: 
 				sys.exit()
+
+	def _update_stars(self):
+		for star in self.stars.copy(): 
+			random_number_1 = randint(-2, 50)
+			if(random_number_1 > 0): 
+				star.twinkle_star()
 
 
 	def _update_screen(self): 
